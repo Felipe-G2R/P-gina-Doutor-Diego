@@ -576,6 +576,14 @@ cropperjs/dist/cropper.css:
 */</style><div><div translate=no class="_monica-theme-d2f2b383 _monica-dark root-container-UmvGjM markdown-font-size-provider-3KSWBx sidebar-ZRQNut" lang=pt_BR><div class=content-root-WCIiJJ><div class=page-extra-window--rG3TB style=right:0px;left:0px></div><div class=dialog-root-ZbJNQk></div><div class=artifact-widget-root-g65VNZ></div><div class=reading-summary-entry-sQ7GjJ style=display:none></div><div class=reading-summary-status-bar-yFqhHz></div><div class=contextual-toolbar-BjPOM3 dir=ltr style=text-align:left></div><div class=window-root-ERNrXd></div></div></div></div></template></div><div class="dialog-widget dialog-lightbox-widget dialog-type-buttons dialog-type-lightbox elementor-popup-modal" id=elementor-popup-modal-3555 aria-modal=true role=document tabindex=0 style=display:none></div><script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
 <!-- Modal do Formulário de Aplicação -->
 <style id="form-modal-styles">
+/* Classe para bloquear scroll do body - evita reflow */
+body.modal-open {
+    overflow: hidden !important;
+}
+/* Loading hidden state via CSS class */
+.form-loading-hidden {
+    display: none !important;
+}
 .form-modal-overlay {
     display: none;
     position: fixed;
@@ -588,6 +596,8 @@ cropperjs/dist/cropper.css:
     overflow-y: auto;
     padding: 20px;
     box-sizing: border-box;
+    contain: layout style;
+    will-change: opacity;
 }
 .form-modal-overlay.active {
     display: flex;
@@ -649,12 +659,14 @@ cropperjs/dist/cropper.css:
     overflow-y: auto;
     background: #fff;
 }
-.form-modal-body iframe {
+.form-modal-body iframe,
+.form-modal-iframe {
     width: 100%;
     height: 75vh;
     min-height: 500px;
     border: none;
     display: block;
+    contain: strict;
 }
 .form-modal-loading {
     display: flex;
@@ -704,80 +716,102 @@ cropperjs/dist/cropper.css:
 
 <script>
 (function() {
+    'use strict';
     var formLoaded = false;
+
+    // Cache de elementos DOM - leitura única para evitar reflows
+    var cachedModal = null;
+    var cachedBody = null;
+    var cachedLoading = null;
+
+    function getElements() {
+        if (!cachedModal) {
+            cachedModal = document.getElementById('formModal');
+            cachedBody = document.getElementById('formModalBody');
+            cachedLoading = document.getElementById('formLoading');
+        }
+        return { modal: cachedModal, body: cachedBody, loading: cachedLoading };
+    }
 
     window.openFormModal = function(e) {
         if (e) { e.preventDefault(); e.stopPropagation(); }
 
-        var modal = document.getElementById('formModal');
-        var body = document.getElementById('formModalBody');
-        var loading = document.getElementById('formLoading');
+        var els = getElements();
 
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        // Batch todas as mudanças de DOM em um único frame
+        requestAnimationFrame(function() {
+            els.modal.classList.add('active');
+            document.body.classList.add('modal-open');
 
-        if (!formLoaded) {
-            loading.style.display = 'flex';
+            if (!formLoaded) {
+                els.loading.classList.remove('form-loading-hidden');
 
-            var iframe = document.createElement('iframe');
-            iframe.src = 'https://api.leadconnectorhq.com/widget/form/ePS33gAQiV2UgVBwzseP';
-            iframe.id = 'inline-ePS33gAQiV2UgVBwzseP';
-            iframe.setAttribute('data-layout', "{'id':'INLINE'}");
-            iframe.setAttribute('data-trigger-type', 'alwaysShow');
-            iframe.setAttribute('data-activation-type', 'alwaysActivated');
-            iframe.setAttribute('data-deactivation-type', 'neverDeactivate');
-            iframe.setAttribute('data-form-name', 'FORMS SE [BAIXO INTERESSE] [NOVO MODELO]');
-            iframe.setAttribute('data-height', 'auto');
-            iframe.setAttribute('data-form-id', 'ePS33gAQiV2UgVBwzseP');
-            iframe.title = 'Formulario de Aplicacao';
-            iframe.style.cssText = 'width:100%;height:75vh;min-height:500px;border:none;display:block;';
-            iframe.setAttribute('scrolling', 'yes');
+                var iframe = document.createElement('iframe');
+                iframe.src = 'https://api.leadconnectorhq.com/widget/form/ePS33gAQiV2UgVBwzseP';
+                iframe.id = 'inline-ePS33gAQiV2UgVBwzseP';
+                iframe.className = 'form-modal-iframe';
+                iframe.setAttribute('data-layout', "{'id':'INLINE'}");
+                iframe.setAttribute('data-trigger-type', 'alwaysShow');
+                iframe.setAttribute('data-activation-type', 'alwaysActivated');
+                iframe.setAttribute('data-deactivation-type', 'neverDeactivate');
+                iframe.setAttribute('data-form-name', 'FORMS SE [BAIXO INTERESSE] [NOVO MODELO]');
+                iframe.setAttribute('data-height', 'auto');
+                iframe.setAttribute('data-form-id', 'ePS33gAQiV2UgVBwzseP');
+                iframe.title = 'Formulario de Aplicacao';
+                iframe.setAttribute('scrolling', 'yes');
 
-            iframe.onload = function() {
-                loading.style.display = 'none';
-                formLoaded = true;
-            };
+                iframe.onload = function() {
+                    requestAnimationFrame(function() {
+                        els.loading.classList.add('form-loading-hidden');
+                    });
+                    formLoaded = true;
+                };
 
-            body.appendChild(iframe);
+                els.body.appendChild(iframe);
 
-            if (!document.getElementById('form-embed-script')) {
-                var script = document.createElement('script');
-                script.id = 'form-embed-script';
-                script.src = 'https://link.msgsndr.com/js/form_embed.js';
-                document.body.appendChild(script);
+                if (!document.getElementById('form-embed-script')) {
+                    var script = document.createElement('script');
+                    script.id = 'form-embed-script';
+                    script.src = 'https://link.msgsndr.com/js/form_embed.js';
+                    script.async = true;
+                    document.body.appendChild(script);
+                }
+            } else {
+                els.loading.classList.add('form-loading-hidden');
             }
-        } else {
-            loading.style.display = 'none';
-        }
+        });
 
-        setTimeout(function() {
-            var closeBtn = modal.querySelector('.form-modal-close');
-            if (closeBtn) closeBtn.focus();
-        }, 100);
+        // Focus após a renderização
+        requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+                var closeBtn = els.modal.querySelector('.form-modal-close');
+                if (closeBtn) closeBtn.focus();
+            });
+        });
 
         return false;
     };
 
     window.closeFormModal = function() {
-        var modal = document.getElementById('formModal');
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
+        var els = getElements();
+        requestAnimationFrame(function() {
+            els.modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        });
     };
 
+    // Event delegation para melhor performance
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            var modal = document.getElementById('formModal');
-            if (modal && modal.classList.contains('active')) {
-                closeFormModal();
-            }
+        if (e.key === 'Escape' && cachedModal && cachedModal.classList.contains('active')) {
+            closeFormModal();
         }
-    });
+    }, { passive: true });
 
     document.addEventListener('click', function(e) {
         if (e.target.id === 'formModal') {
             closeFormModal();
         }
-    });
+    }, { passive: true });
 })();
 </script>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
