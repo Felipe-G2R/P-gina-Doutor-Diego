@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sessao Estrategica Gratuita - Elabore um plano pratico e personalizado para captar pacientes particulares e escalar seu faturamento">
+
+  <!-- Preconnect para performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Font Poppins otimizada -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/images/img_000_97afdcfc.png" type="image/png">
+
+  <title>Sessao Estrategica Gratuita | Dr. Diego Correa Instituto</title>
+
+  <!-- Critical CSS inline para First Paint rapido -->
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Poppins',system-ui,-apple-system,sans-serif;line-height:1.6;color:#22262a;background:#fff}
+    .loading{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+    .loaded{opacity:1;transform:translateY(0)}
+  </style>
+
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <!-- [1] Barra de Urgencia (sticky) -->
+  <div class="urgency-bar" id="urgencyBar">
+    <span class="pulse-dot"></span>
+    <span><strong>VAGAS LIMITADAS:</strong> Restam apenas <span id="vagasCount">7</span> vagas esta semana</span>
+  </div>
+
+  <!-- [2] Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content loading" data-animate>
+        <span class="badge">100% GRATUITO</span>
+        <h1 class="hero-title">
+          Elaborei junto com o <span class="highlight">Estrategista da minha clinica</span> um plano pratico e personalizado para quem quer:
+        </h1>
+        <p class="hero-subtitle">
+          <strong>Captar Pacientes Particulares</strong> e <strong>Escalar o Faturamento</strong>
+          de forma previsivel e consistente nos proximos 90 dias.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#aplicar" class="btn btn-primary btn-pulse">
+            <span>APLIQUE PARA UMA VAGA GRATUITA</span>
+            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <p class="cta-note">
+            <svg class="icon-lock" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1C8.676 1 6 3.676 6 7v2H4v14h16V9h-2V7c0-3.324-2.676-6-6-6zm0 2c2.276 0 4 1.724 4 4v2H8V7c0-2.276 1.724-4 4-4z"/>
+            </svg>
+            Seus dados estao 100% seguros
+          </p>
+        </div>
+
+        <!-- Social Proof Mini -->
+        <div class="social-proof-mini">
+          <div class="avatars">
+            <div class="avatar">
+              <img src="/images/img_001_399e6548.webp" alt="Dra. Lorena" loading="lazy">
+            </div>
+            <div class="avatar">
+              <img src="/images/img_002_3c9a1867.webp" alt="Dra. Leticia" loading="lazy">
+            </div>
+            <div class="avatar">
+              <img src="/images/img_003_32df9b7a.webp" alt="Dra. Maria Augusta" loading="lazy">
+            </div>
+            <div class="avatar" style="background: linear-gradient(135deg, #776AFF, #874dfe); color: white;">+150</div>
+          </div>
+          <p><strong>+150 profissionais</strong> ja aplicaram esta semana</p>
+        </div>
+      </div>
+
+      <div class="hero-visual loading" data-animate data-delay="200">
+        <div class="hero-image">
+          <img src="/images/img_004_f4ef733e.webp" alt="Sessao Estrategica" loading="eager">
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <span>Role para baixo</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- [3] Problema/Dor Section -->
+  <section class="pain-section" id="problema">
+    <div class="container">
+      <h2 class="section-title loading" data-animate>
+        Voce esta com dificuldades para <span class="highlight">Captar Pacientes Particulares</span> e Escalar o seu Faturamento?
+      </h2>
+
+      <div class="pain-grid">
+        <div class="pain-card loading" data-animate data-delay="100">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <h3>Faturamento Estagnado</h3>
+          <p>Trabalha muito mas o faturamento nao cresce como deveria</p>
+        </div>
+
+        <div class="pain-card loading" data-animate data-delay="200">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+          </div>
+          <h3>Dificuldade em Captar</h3>
+          <p>Nao consegue atrair pacientes particulares de forma previsivel</p>
+        </div>
+
+        <div class="pain-card loading" data-animate data-delay="300">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+            </svg>
+          </div>
+          <h3>Sem Tempo</h3>
+          <p>Esta sobrecarregado e nao tem tempo para pensar em estrategia</p>
+        </div>
+
+        <div class="pain-card loading" data-animate data-delay="400">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+            </svg>
+          </div>
+          <h3>Sem Clareza</h3>
+          <p>Nao sabe qual o proximo passo para escalar o consultorio</p>
+        </div>
+      </div>
+
+      <p class="pain-conclusion loading" data-animate>
+        Se voce se identificou com <strong>pelo menos 2</strong> dessas situacoes,
+        a Sessao Estrategica foi feita para voce.
+      </p>
+    </div>
+  </section>
+
+  <!-- [4] Solucao/Beneficios Section -->
+  <section class="solution-section" id="solucao">
+    <div class="container">
+      <div class="solution-content">
+        <div class="solution-text loading" data-animate>
+          <span class="badge badge-secondary">A SOLUCAO</span>
+          <h2>O que voce vai receber na Sessao Estrategica:</h2>
+
+          <ul class="benefits-list">
+            <li class="benefit-item">
+              <span class="check-icon">&#10003;</span>
+              <div>
+                <strong>Diagnostico Completo</strong>
+                <p>Analise profunda do seu consultorio e identificacao dos gargalos</p>
+              </div>
+            </li>
+            <li class="benefit-item">
+              <span class="check-icon">&#10003;</span>
+              <div>
+                <strong>Plano de Acao Personalizado</strong>
+                <p>Estrategia clara com os proximos passos para captar mais pacientes</p>
+              </div>
+            </li>
+            <li class="benefit-item">
+              <span class="check-icon">&#10003;</span>
+              <div>
+                <strong>Metas Realistas</strong>
+                <p>Projecao de resultados baseada na sua realidade atual</p>
+              </div>
+            </li>
+            <li class="benefit-item">
+              <span class="check-icon">&#10003;</span>
+              <div>
+                <strong>Sem Compromisso</strong>
+                <p>Sessao 100% gratuita, sem obrigacao de compra</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="solution-visual loading" data-animate data-delay="200">
+          <div class="stats-card">
+            <div class="stat">
+              <span class="stat-number" data-count="150">0</span>
+              <span class="stat-label">Sessoes Realizadas</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-count="94">0</span><span class="stat-suffix">%</span>
+              <span class="stat-label">Taxa de Satisfacao</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-count="3">0</span><span class="stat-suffix">x</span>
+              <span class="stat-label">Aumento Medio de Faturamento</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [5] Prova Social (Depoimentos) -->
+  <section class="testimonials-section" id="depoimentos">
+    <div class="container">
+      <h2 class="section-title loading" data-animate>
+        O que dizem quem ja fez a Sessao:
+      </h2>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card loading" data-animate data-delay="100">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="/images/img_001_399e6548.webp" alt="Dra. Lorena" loading="lazy">
+            </div>
+            <div>
+              <strong>Dra. Lorena</strong>
+              <span>Oftalmologista</span>
+            </div>
+          </div>
+          <p class="testimonial-text">
+            "Elaborei junto com o Estrategista um plano pratico e personalizado
+            para captar mais pacientes particulares. Em 60 dias ja vi resultados incriveis!"
+          </p>
+          <div class="testimonial-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+
+        <div class="testimonial-card loading" data-animate data-delay="200">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="/images/img_002_3c9a1867.webp" alt="Dra. Leticia" loading="lazy">
+            </div>
+            <div>
+              <strong>Dra. Leticia</strong>
+              <span>Dermatologista</span>
+            </div>
+          </div>
+          <p class="testimonial-text">
+            "Melhor investimento de tempo que fiz! 30 minutos que mudaram
+            completamente minha visao sobre como escalar o consultorio."
+          </p>
+          <div class="testimonial-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+
+        <div class="testimonial-card loading" data-animate data-delay="300">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">
+              <img src="/images/img_003_32df9b7a.webp" alt="Dra. Maria Augusta" loading="lazy">
+            </div>
+            <div>
+              <strong>Dra. Maria Augusta</strong>
+              <span>Tricologista</span>
+            </div>
+          </div>
+          <p class="testimonial-text">
+            "A sessao me deu clareza total sobre o que eu precisava fazer.
+            Parei de perder tempo com estrategias que nao funcionavam."
+          </p>
+          <div class="testimonial-rating">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [6] Quem e (Autoridade) -->
+  <section class="authority-section" id="autoridade">
+    <div class="container">
+      <div class="authority-content">
+        <div class="authority-image loading" data-animate>
+          <div class="authority-photo">
+            <img src="/images/img_005_0b0de0a7.webp" alt="Dr. Diego Correa" loading="lazy">
+          </div>
+        </div>
+
+        <div class="authority-text loading" data-animate data-delay="200">
+          <h2>Quem e Dr. Diego Correa</h2>
+          <p class="title">Estrategista em Crescimento de Clinicas</p>
+          <p>
+            Com anos de experiencia ajudando profissionais da saude a escalarem
+            seus consultorios, Dr. Diego desenvolveu uma metodologia unica que
+            ja transformou a realidade de mais de 150 medicos e dentistas.
+          </p>
+          <p>
+            Sua abordagem pratica e focada em resultados permite que voce
+            tenha um plano claro e executavel em maos apos cada sessao.
+          </p>
+          <ul class="authority-credentials">
+            <li>+150 profissionais atendidos</li>
+            <li>Metodologia comprovada</li>
+            <li>Resultados em 90 dias</li>
+            <li>Foco em pacientes particulares</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [7] Formulario de Aplicacao -->
+  <section class="form-section" id="aplicar">
+    <div class="container">
+      <div class="form-wrapper loading" data-animate>
+        <div class="form-header">
+          <h2>Aperte no botao abaixo, se cadastre e meu time vai entrar em contato com voce:</h2>
+          <p>Preencha o formulario e nossa equipe entrara em contato em ate 24h</p>
+        </div>
+
+        <form class="application-form" id="applicationForm">
+          <div class="form-group">
+            <label for="nome">Seu nome completo *</label>
+            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+          </div>
+
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp *</label>
+            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(00) 00000-0000">
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+          </div>
+
+          <div class="form-group">
+            <label for="area">Area de atuacao *</label>
+            <select id="area" name="area" required>
+              <option value="">Selecione sua area</option>
+              <option value="medicina">Medicina</option>
+              <option value="odontologia">Odontologia</option>
+              <option value="oftalmologia">Oftalmologia</option>
+              <option value="dermatologia">Dermatologia</option>
+              <option value="tricologia">Tricologia</option>
+              <option value="psicologia">Psicologia</option>
+              <option value="fisioterapia">Fisioterapia</option>
+              <option value="nutricao">Nutricao</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="faturamento">Faturamento mensal atual</label>
+            <select id="faturamento" name="faturamento">
+              <option value="">Selecione uma faixa</option>
+              <option value="ate10k">Ate R$ 10.000</option>
+              <option value="10k-30k">R$ 10.000 a R$ 30.000</option>
+              <option value="30k-50k">R$ 30.000 a R$ 50.000</option>
+              <option value="50k-100k">R$ 50.000 a R$ 100.000</option>
+              <option value="100k+">Acima de R$ 100.000</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            <span class="btn-text">QUERO APLICAR AGORA</span>
+            <span class="btn-loading" style="display:none">
+              <span class="spinner"></span> Enviando...
+            </span>
+          </button>
+
+          <p class="form-disclaimer">
+            <svg class="icon-lock" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1C8.676 1 6 3.676 6 7v2H4v14h16V9h-2V7c0-3.324-2.676-6-6-6zm0 2c2.276 0 4 1.724 4 4v2H8V7c0-2.276 1.724-4 4-4z"/>
+            </svg>
+            Seus dados estao protegidos e nao serao compartilhados
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- [8] FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <h2 class="section-title loading" data-animate>Perguntas Frequentes</h2>
+
+      <div class="faq-list">
+        <div class="faq-item loading" data-animate data-delay="100">
+          <button class="faq-question" aria-expanded="false">
+            <span>A sessao e realmente gratuita?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim, 100% gratuita. Nao ha nenhum custo ou obrigacao de compra.
+            E uma oportunidade para voce conhecer nosso trabalho e receber valor real.</p>
+          </div>
+        </div>
+
+        <div class="faq-item loading" data-animate data-delay="200">
+          <button class="faq-question" aria-expanded="false">
+            <span>Quanto tempo dura a sessao?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>A sessao tem duracao media de 30 a 45 minutos, dependendo da
+            complexidade do seu consultorio e das suas duvidas.</p>
+          </div>
+        </div>
+
+        <div class="faq-item loading" data-animate data-delay="300">
+          <button class="faq-question" aria-expanded="false">
+            <span>Como funciona o processo?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Apos preencher o formulario, nossa equipe entrara em contato via WhatsApp
+            para agendar o melhor horario. A sessao acontece por videochamada.</p>
+          </div>
+        </div>
+
+        <div class="faq-item loading" data-animate data-delay="400">
+          <button class="faq-question" aria-expanded="false">
+            <span>Para quem e indicada a sessao?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Para medicos, dentistas e profissionais da saude que querem captar
+            mais pacientes particulares e escalar seu faturamento de forma estrategica.</p>
+          </div>
+        </div>
+
+        <div class="faq-item loading" data-animate data-delay="500">
+          <button class="faq-question" aria-expanded="false">
+            <span>Preciso ter experiencia com marketing?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Nao! A sessao e feita para profissionais de todas as experiencias.
+            Vamos criar um plano pratico e executavel independente do seu nivel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [9] CTA Final -->
+  <section class="final-cta" id="cta-final">
+    <div class="container">
+      <div class="cta-content loading" data-animate>
+        <h2>Chegou no fim da pagina e ainda nao marcou a sua Consultoria?</h2>
+        <p>Nao perca mais tempo. As vagas sao limitadas e podem acabar a qualquer momento.</p>
+        <a href="#aplicar" class="btn btn-primary btn-large btn-pulse">
+          APLIQUE PARA UMA VAGA GRATUITA
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- [10] Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Dr. Diego Correa Instituto. Todos os direitos reservados.</p>
+      <p class="footer-links">
+        <a href="#">Politica de Privacidade</a> |
+        <a href="#">Termos de Uso</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/5500000000000?text=Ola!%20Quero%20saber%20mais%20sobre%20a%20Sessao%20Estrategica"
+     class="whatsapp-float"
+     target="_blank"
+     rel="noopener"
+     aria-label="Contato via WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- Success Modal -->
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <div class="modal-icon">&#10003;</div>
+      <h3>Aplicacao Enviada!</h3>
+      <p>Nossa equipe entrara em contato em ate 24 horas pelo WhatsApp.</p>
+      <button class="btn btn-primary" onclick="closeModal()">Entendi</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
