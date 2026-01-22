@@ -39,10 +39,10 @@ export default function Home() {
         const bodyMatch = html.match(/<body[^>]*>([\s\S]*)/i)
         if (bodyMatch) {
           let bodyContent = bodyMatch[1]
-          // Remove vercel scripts and form_embed script
+          // Remove vercel scripts and HubSpot embed script (loaded separately via Next Script)
           bodyContent = bodyContent
             .replace(/<script[^>]*src="[^"]*\/_vercel\/[^"]*"[^>]*><\/script>/gi, '')
-            .replace(/<script[^>]*src="[^"]*form_embed[^"]*"[^>]*><\/script>/gi, '')
+            .replace(/<script[^>]*src="[^"]*hsforms\.net[^"]*"[^>]*><\/script>/gi, '')
           setContent(bodyContent)
         }
         setIsLoading(false)
@@ -101,7 +101,7 @@ export default function Home() {
         strategy="afterInteractive"
       />
       <Script
-        src="https://link.msgsndr.com/js/form_embed.js"
+        src="https://js.hsforms.net/forms/embed/50805615.js"
         strategy="lazyOnload"
       />
     </>
