@@ -839,5 +839,55 @@ body.modal-open {
 })();
 </script>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+<script>
+// Interceptar redirecionamento do formulário HighLevel para URL correta
+(function() {
+    var correctRedirectUrl = 'https://nextlevelformed.com.br/obrigado-ses/';
+    var wrongDomain = 'diegocorreainstituto.com.br';
+
+    // Escutar mensagens do iframe do formulário HighLevel
+    window.addEventListener('message', function(event) {
+        // Verificar se é uma mensagem de redirecionamento do HighLevel
+        if (event.data) {
+            var data = event.data;
+
+            // HighLevel pode enviar como objeto
+            if (typeof data === 'object') {
+                if (data.type === 'form:submit' ||
+                    data.type === 'form_submitted' ||
+                    data.formSubmitted === true ||
+                    data.action === 'redirect' ||
+                    data.event === 'form_submit_success') {
+                    window.location.href = correctRedirectUrl;
+                    return;
+                }
+                // Verificar se há URL de redirecionamento no objeto
+                if (data.redirectUrl && data.redirectUrl.includes(wrongDomain)) {
+                    window.location.href = correctRedirectUrl;
+                    return;
+                }
+            }
+
+            // HighLevel pode enviar como string
+            if (typeof data === 'string') {
+                if (data.includes(wrongDomain) || data.includes('obgapl')) {
+                    window.location.href = correctRedirectUrl;
+                    return;
+                }
+            }
+        }
+    });
+
+    // Interceptar beforeunload para verificar redirecionamento
+    var checkRedirect = function() {
+        if (window.location.href.includes(wrongDomain)) {
+            window.location.replace(correctRedirectUrl);
+        }
+    };
+
+    // Verificar periodicamente
+    setInterval(checkRedirect, 100);
+})();
+</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
