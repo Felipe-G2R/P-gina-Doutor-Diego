@@ -8,29 +8,6 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Meta Pixel Code
-    if (typeof window !== 'undefined') {
-      const w = window as any
-      if (!w.fbq) {
-        const fbq: any = function(...args: any[]) {
-          if (fbq.callMethod) {
-            fbq.callMethod.apply(fbq, args)
-          } else {
-            fbq.queue.push(args)
-          }
-        }
-        fbq.push = fbq
-        fbq.loaded = true
-        fbq.version = '2.0'
-        fbq.queue = []
-        w.fbq = fbq
-        if (!w._fbq) w._fbq = fbq
-
-        w.fbq('init', '402956308839839')
-        w.fbq('track', 'PageView')
-      }
-    }
-
     // Load HTML content
     fetch('/landing.html')
       .then(res => res.text())
@@ -84,22 +61,9 @@ export default function Home() {
 
   return (
     <>
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: 'none' }}
-          src="https://www.facebook.com/tr?id=402956308839839&ev=PageView&noscript=1"
-          alt=""
-        />
-      </noscript>
       <main
         id="main-content"
         dangerouslySetInnerHTML={{ __html: content }}
-      />
-      <Script
-        src="https://connect.facebook.net/en_US/fbevents.js"
-        strategy="afterInteractive"
       />
       <Script
         src="https://link.msgsndr.com/js/form_embed.js"
