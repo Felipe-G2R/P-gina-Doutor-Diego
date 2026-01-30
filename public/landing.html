@@ -575,13 +575,11 @@ cropperjs/dist/cropper.css:
  * Date: 2024-04-21T07:43:02.731Z
  *)
 */</style><div><div translate=no class="_monica-theme-d2f2b383 _monica-dark root-container-UmvGjM markdown-font-size-provider-3KSWBx sidebar-ZRQNut" lang=pt_BR><div class=content-root-WCIiJJ><div class=page-extra-window--rG3TB style=right:0px;left:0px></div><div class=dialog-root-ZbJNQk></div><div class=artifact-widget-root-g65VNZ></div><div class=reading-summary-entry-sQ7GjJ style=display:none></div><div class=reading-summary-status-bar-yFqhHz></div><div class=contextual-toolbar-BjPOM3 dir=ltr style=text-align:left></div><div class=window-root-ERNrXd></div></div></div></div></template></div><div class="dialog-widget dialog-lightbox-widget dialog-type-buttons dialog-type-lightbox elementor-popup-modal" id=elementor-popup-modal-3555 aria-modal=true role=document tabindex=0 style=display:none></div><script data-template-shadow-root>(()=>{document.currentScript.remove();processNode(document);function processNode(node){node.querySelectorAll("template[shadowrootmode]").forEach(element=>{let shadowRoot = element.parentElement.shadowRoot;if (!shadowRoot) {try {shadowRoot=element.parentElement.attachShadow({mode:element.getAttribute("shadowrootmode"),delegatesFocus:element.getAttribute("shadowrootdelegatesfocus")!=null,clonable:element.getAttribute("shadowrootclonable")!=null,serializable:element.getAttribute("shadowrootserializable")!=null});shadowRoot.innerHTML=element.innerHTML;element.remove()} catch (error) {} if (shadowRoot) {processNode(shadowRoot)}}})}})()</script>
-<!-- Modal do Formulário de Aplicação -->
+<!-- Modal do Formulário FUNIL SE [REDUZIDO] -->
 <style id="form-modal-styles">
-/* Classe para bloquear scroll do body - evita reflow */
 body.modal-open {
     overflow: hidden !important;
 }
-/* Loading hidden state via CSS class */
 .form-loading-hidden {
     display: none !important;
 }
@@ -703,7 +701,7 @@ body.modal-open {
 <div id="formModal" class="form-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="form-modal-container">
         <div class="form-modal-header">
-            <h3 id="modalTitle">Aplique para uma Sessao Estrategica</h3>
+            <h3 id="modalTitle">Aplique para Sessão Estratégica</h3>
             <button class="form-modal-close" onclick="closeFormModal()" aria-label="Fechar formulario">&times;</button>
         </div>
         <div class="form-modal-body" id="formModalBody">
@@ -719,8 +717,6 @@ body.modal-open {
 (function() {
     'use strict';
     var formLoaded = false;
-
-    // Cache de elementos DOM - leitura única para evitar reflows
     var cachedModal = null;
     var cachedBody = null;
     var cachedLoading = null;
@@ -739,7 +735,6 @@ body.modal-open {
 
         var els = getElements();
 
-        // Batch todas as mudanças de DOM em um único frame
         requestAnimationFrame(function() {
             els.modal.classList.add('active');
             document.body.classList.add('modal-open');
@@ -747,7 +742,6 @@ body.modal-open {
             if (!formLoaded) {
                 els.loading.classList.remove('form-loading-hidden');
 
-                // Criar iframe do HighLevel
                 var formIframe = document.createElement('iframe');
                 formIframe.src = 'https://api.leadconnectorhq.com/widget/form/tQoEPlFkFUlyAvfpAHqZ';
                 formIframe.style.cssText = 'width:100%;height:100%;border:none;border-radius:3px';
@@ -775,7 +769,6 @@ body.modal-open {
 
                 els.body.appendChild(formIframe);
 
-                // Carregar script do HighLevel se ainda não carregado
                 if (!document.getElementById('hl-form-embed-script')) {
                     var script = document.createElement('script');
                     script.id = 'hl-form-embed-script';
@@ -787,7 +780,6 @@ body.modal-open {
             }
         });
 
-        // Focus após a renderização
         requestAnimationFrame(function() {
             requestAnimationFrame(function() {
                 var closeBtn = els.modal.querySelector('.form-modal-close');
@@ -806,7 +798,6 @@ body.modal-open {
         });
     };
 
-    // Event delegation para melhor performance
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && cachedModal && cachedModal.classList.contains('active')) {
             closeFormModal();
